@@ -1,0 +1,18 @@
+{
+  "name": "infra-workframe",
+  "version": "1.0.0",
+  "description": "Stack of comonly used tools in apps development",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^6.10.0",
+    "app-controller": "^0.5.1",
+    "clickhouze": "^0.3.6",
+    "knex": "^0.17.3",
+    "pg": "^7.11.0"
+  }
+}
