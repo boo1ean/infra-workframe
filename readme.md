@@ -7,6 +7,7 @@ Main purpose is to reduce basic setup and configuration boilerplates for commonl
 **Provider** - an opinionated name for modules which are reused across many apps and are not domain specific.
 
 Examples are:
+
 	- database interactions interface
 	- message queue interactions interface
 	- logger
