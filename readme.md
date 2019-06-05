@@ -2,9 +2,9 @@
 
 Set of frequently used tools in number of nodejs projects.
 
-Main purpose is to reduce basic setup and configuration boilerplates for commonly used *providers*.
+Main purpose is to reduce basic setup and configuration boilerplates for commonly used **providers**.
 
-*Provider* - an opinionated name for modules which are reused across many apps and are not domain specific.
+**Provider** - an opinionated name for modules which are reused across many apps and are not domain specific.
 
 Examples are:
 	- database interactions interface
