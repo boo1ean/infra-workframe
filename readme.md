@@ -18,7 +18,7 @@ npm i infra-workframe
 ```
 
 ## Example usage
-```
+```javascript
 const { knex, log, validation } = require('infra-workframe')(config)
 // ...
 ```
