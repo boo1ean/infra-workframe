@@ -1,5 +1,4 @@
 const winston = require('winston');
-const LogstashUDP = require('winston-logstash-udp').LogstashUDP
 
 const DEBUG_LOG_LEVEL = 7
 
@@ -19,10 +18,6 @@ module.exports = config => {
 			json: true,
 			handleExceptions: true,
 		}))
-	}
-
-	if (config.hasLogstashTransport) {
-		logger.add(new LogstashUDP(config.logstash))
 	}
 
 	return logger

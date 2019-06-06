@@ -15,6 +15,7 @@
     "express-request-log": "^1.2.0",
     "http-shutdown": "^1.2.1",
     "knex": "^0.17.3",
-    "pg": "^7.11.0"
+    "pg": "^7.11.0",
+    "winston": "^3.2.1"
   }
 }
