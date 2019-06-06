@@ -1,24 +1,41 @@
-const winston = require('winston');
+const winston = require('winston')
+const logform = require('logform')
+const { SPLAT } = require('triple-beam')
 
 const DEBUG_LOG_LEVEL = 7
 
 module.exports = config => {
-	const logger = new winston.createLogger({
-		level: config.level || DEBUG_LOG_LEVEL,
-		exitOnError: false,
-		format: winston.format.combine(
-			winston.format.label({ label: config.label }),
-			winston.format.timestamp(),
-			winston.format.prettyPrint(),
-		),
+	// It's supposed to use errors like log.error('Contextual message', new Error('HAHAHA'))
+
+	const errorStackFormatter = logform.format(info => {
+		const error = (info[SPLAT] || []).find(obj => obj instanceof Error)
+
+		if (error) {
+			const formatedError = {
+				message: error.message,
+				stack: error.stack.split('\n') || error.toString()
+			}
+			info.error = formatedError
+			delete info.stack
+		}
+
+		return info
 	})
 
-	if (config.hasConsoleTransport) {
-		logger.add(new winston.transports.Console({
-			json: true,
-			handleExceptions: true,
-		}))
-	}
+	const winstonConsoleFormat = logform.format.combine(
+		errorStackFormatter(),
+		logform.format.prettyPrint(),
+	)
+
+	const logger = winston.createLogger({
+		level: config.level || DEBUG_LOG_LEVEL,
+		exitOnError: false,
+		transports: [
+			new winston.transports.Console({
+				format: winstonConsoleFormat,
+			})
+		],
+	})
 
 	return logger
 }
