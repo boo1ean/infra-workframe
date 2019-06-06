@@ -1,6 +1,6 @@
 {
   "name": "infra-workframe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stack of comonly used tools in apps development",
   "main": "src/index.js",
   "scripts": {
@@ -12,6 +12,8 @@
     "ajv": "^6.10.0",
     "app-controller": "^0.5.1",
     "clickhouze": "^0.3.6",
+    "express-request-log": "^1.2.0",
+    "http-shutdown": "^1.2.1",
     "knex": "^0.17.3",
     "pg": "^7.11.0"
   }
