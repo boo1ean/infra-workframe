@@ -1,7 +1,17 @@
 const knex = require('knex')
 module.exports = (config, log) => {
-	const client = knex(config)
+	try {
+		const client = knex(config)
+	} catch (e) {
+		return log.error('Knex config error. ', e).end(shutdown)
+	}
+
 	client.raw('select 1')
-		.catch(e => log.error('postgres connection error', e, () => process.exit(11)))
+		.catch(e => log.error('Postgres connection error. ', e).end(shutdown))
+
 	return client
+}
+
+function shutdown () {
+	process.exit(11)
 }

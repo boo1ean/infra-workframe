@@ -2,7 +2,7 @@ const winston = require('winston')
 const logform = require('logform')
 const { SPLAT } = require('triple-beam')
 
-const DEBUG_LOG_LEVEL = 7
+const DEBUG_LOG_LEVEL = 'debug'
 
 module.exports = config => {
 	// It's supposed to use errors like log.error('Contextual message', new Error('HAHAHA'))
@@ -23,6 +23,9 @@ module.exports = config => {
 	})
 
 	const winstonConsoleFormat = logform.format.combine(
+		logform.format.label({ label: config.label }),
+		logform.format.timestamp(),
+		logform.format.splat(),
 		errorStackFormatter(),
 		logform.format.prettyPrint(),
 	)

@@ -1,3 +1,4 @@
+const assert = require('assert')
 const fs = require('fs')
 const http = require('http')
 const https = require('https')
@@ -7,6 +8,11 @@ const requestLog = require('express-request-log')
 const bodyParser = require('body-parser')
 
 module.exports = (log, middlewares, config) => {
+	assert(log, 'logger param is required')
+	assert(middlewares, 'middlewares param is required')
+	assert(config, 'config param is required')
+	assert(middlewares.session, 'middlewares.session param is required')
+
 	process.on('uncaughtException', logErrorAndShutdown)
 	process.on('unhandledRejection', logErrorAndShutdown)
 	process.on('SIGINT', shutdown)
@@ -36,7 +42,7 @@ module.exports = (log, middlewares, config) => {
 	return { app, httpServer }
 
 	function logErrorAndShutdown (error) {
-		log.error('Fatal error shutdown', { error }, () => {
+		log.error('Fatal error shutdown', error, () => {
 			shutdown(11)
 		})
 	}

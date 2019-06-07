@@ -1,5 +1,5 @@
 const knex = require('./knex')
-const log = require('./log')
+const createLogger = require('./log')
 const allow = require('./allow')
 const controller = require('./controller')
 const clickhouse = require('./clickhouse')
@@ -9,7 +9,7 @@ module.exports = config => {
 	const providers = {
 		controller: controller(),
 		validation: validation(),
-		log: log(config.log || {}),
+		log: createLogger(config.log || {}),
 	}
 
 	//
