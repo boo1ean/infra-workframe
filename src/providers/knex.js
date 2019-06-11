@@ -1,7 +1,8 @@
 const knex = require('knex')
 module.exports = (config, log) => {
+	let client
 	try {
-		const client = knex(config)
+		client = knex(config)
 	} catch (e) {
 		return log.error('Knex config error. ', e).end(shutdown)
 	}

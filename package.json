@@ -1,6 +1,6 @@
 {
   "name": "infra-workframe",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Stack of comonly used tools in apps development",
   "main": "src/index.js",
   "scripts": {
